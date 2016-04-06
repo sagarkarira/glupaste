@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link href="lib/prism/prism.css" rel="stylesheet" />
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+ 	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  	<script src="lib/jquery/dist/jquery.min.js"></script>
+  	 <script src="lib/clipboard/dist/clipboard.min.js"></script>
+  	<script src="lib/prism/prism.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">  
+	     	<div class="col-sm-10">
+	        	<img href="" height="30%" width= "30%" class="img-responsive" src="/lib/images/glupaste.jpg">
+	        	</img>
+	      	</div>
+	    	
+
+	    	<div class="col-sm-2">
+	    		<br/>
+		    		<a href="https://twitter.com/share" class=" twitter-share-button" data-hashtags="glupaste">Paste it</a>
+		    	
+				
+	   			 <h4> id: <%=timestamp%></h4>	    
+	    	</div>
+			<legend></legend>
+			<h5 > Author : <%=author%> </h4>
+			<h5 > Language : <%=language%> </h4>
+			<h5 >Paste generated at : <%=date%> </h4>
+		
+			<pre class="copytoclipboard line-numbers "><code class="language-<%=language%>"> <%=content%></code>
+			</pre>
+		</div>
+	</div>
+	
+	<script>
+		
+        /* Prism copy to clipbaord for all pre with copytoclipboard class */
+        $('pre.copytoclipboard').each(function () {
+            $this = $(this);
+            $button = $('<button>Copy</button>');
+            $this.wrap('<div/>').removeClass('copytoclipboard');
+            $wrapper = $this.parent();
+            $wrapper.addClass('copytoclipboard-wrapper').css({position: 'relative'})
+            $button.css({position: 'absolute', top: 10, right: 10}).appendTo($wrapper).addClass('copytoclipboard btn btn-default');
+            /* */
+            var copyCode = new Clipboard('button.copytoclipboard', {
+                target: function (trigger) {
+                    return trigger.previousElementSibling;
+                }
+            });
+            copyCode.on('success', function (event) {
+                event.clearSelection();
+                event.trigger.textContent = 'Copied';
+                window.setTimeout(function () {
+                    event.trigger.textContent = 'Copy';
+                }, 2000);
+            });
+            copyCode.on('error', function (event) {
+                event.trigger.textContent = 'Press "Ctrl + C" to copy';
+                window.setTimeout(function () {
+                    event.trigger.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+		
+
+
+	</script>
+
+	<script>
+
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+	</script>
+
+
+
+</body>
+</html>

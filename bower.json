@@ -1,0 +1,24 @@
+{
+  "name": "hackathon",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Sagar <sagarkarira1992@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "clipboard": "^1.5.10"
+  }
+}
